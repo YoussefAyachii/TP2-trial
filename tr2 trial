@@ -1,0 +1,110 @@
+my_file = open("/Users/bottimacintosh/Desktop/input.txt", "r") 
+data = my_file.read()
+my_file.close()
+data_splitted = data.split("\n") 
+print(data_splitted[0])
+l1=[]
+line=8
+column=32
+for i in range (line):
+    data_splitted = data.split("\n") 
+    l1.append(list(data_splitted[i]))
+print(l1)
+l=int()
+c=int()
+t=int(input("enter a repetition number : t= "))
+for i in range (t) :
+    for l in range (line):
+        for c in range (column):        
+            x=l1[l][c]
+  
+            if l>0 and c>0 and l<7 and c<31 :
+                a=l1[l-1][c-1]
+                b=l1[l-1][c]
+                c=l1[l-1][c+1] 
+                d=l1[l][c-1]
+                f=l1[l+1][c-1]
+                e=l1[l][c+1]
+                g=l1[l+1][c]
+                h=l1[l+1][c+1]
+                s_total=a+b+c+d+e+f+g+h
+                
+            if l==0 and c>0 and l<7 and c<31 :
+                d=l1[l][c-1]
+                f=l1[l+1][c-1]
+                e=l1[l][c+1]
+                g=l1[l+1][c]
+                h=l1[l+1][c+1]
+                s_total=d+f+e+g+h
+            
+            if l>0 and c==0 and l<7  :
+                b=l1[l-1][c]
+                c=l1[l-1][c+1] 
+                e=l1[l][c+1]
+                g=l1[l+1][c]
+                h=l1[l+1][c+1]
+                s_total=b+c+e+g+h
+                
+            if l>0  and l<7 and c==31 :
+                a=l1[l-1][c-1]
+                b=l1[l-1][c]
+        
+                d=l1[l][c-1]
+                f=l1[l+1][c-1]
+        
+                g=l1[l+1][c]
+        
+                s_total=a+b+d+f+g
+                
+            if  c>0 and l==7 and c<31 :
+                a=l1[l-1][c-1]
+                b=l1[l-1][c]
+                c=l1[l-1][c+1] 
+                d=l1[l][c-1]
+        
+                e=l1[l][c+1]
+        
+        
+                s_total=a+b+c+d+e
+            
+            if l==0 and c==0 :
+        
+        
+                e=l1[l][c+1]
+                g=l1[l+1][c]
+                h=l1[l+1][c+1]
+                s_total=g+h+e
+                
+            if l==0 and c==31 :
+                d=l1[l][c-1]
+                f=l1[l+1][c-1]
+                g=l1[l+1][c]
+                s_total=d+f+g
+            
+            if l==7 and c==31 :
+                a=l1[l-1][c-1]
+                b=l1[l-1][c]
+                d=l1[l][c-1]
+                s_total=a+b+d
+                
+            if l==7 and c==31 :
+                b=l1[l-1][c]
+                c=l1[l-1][c+1] 
+                e=l1[l][c+1]
+        
+                s_total=b+c+e
+                
+                
+        #cell futur 
+            if x==1 and ( s_total==2 or s_total==3) :
+                l1[l][c]=1
+            
+            if x==0 and s_total==3 :
+                l1[l][c]=1
+            
+            if x==1 and s_total!=3 : 
+                l1[l][c]=0
+ 
+
+               
+            
